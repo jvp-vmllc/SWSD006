@@ -1,0 +1,6 @@
+
+module = LBM
+module-str = LoRa Basics Modem
+source "subsys/logging/Kconfig.template.log_config"
+
+
