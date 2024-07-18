@@ -33,8 +33,7 @@
 #define LORA_BASICS_MODEM_VERSION_H__
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 /*
@@ -57,13 +56,14 @@ extern "C"
  * --- PUBLIC TYPES ------------------------------------------------------------
  */
 #define LORA_BASICS_MODEM_FW_VERSION_MAJOR 4
-#define LORA_BASICS_MODEM_FW_VERSION_MINOR 5
-#define LORA_BASICS_MODEM_FW_VERSION_PATCH 0
+#define LORA_BASICS_MODEM_FW_VERSION_MINOR 3
+#define LORA_BASICS_MODEM_FW_VERSION_PATCH 1
 
 /*
  * -----------------------------------------------------------------------------
  * --- PUBLIC FUNCTIONS PROTOTYPES ---------------------------------------------
  */
+
 #ifdef __cplusplus
 }
 #endif

@@ -241,7 +241,7 @@ static const uint32_t ral_sx126x_convert_tx_dbm_to_ua_reg_mode_ldo_hp[] = {
  *
  * @returns RAL interrupt status
  */
-ral_irq_t ral_sx126x_convert_irq_flags_to_ral( sx126x_irq_mask_t sx126x_irq );
+static ral_irq_t ral_sx126x_convert_irq_flags_to_ral( sx126x_irq_mask_t sx126x_irq );
 
 /**
  * @brief Convert interrupt flags from RAL context to SX126x context
@@ -250,7 +250,7 @@ ral_irq_t ral_sx126x_convert_irq_flags_to_ral( sx126x_irq_mask_t sx126x_irq );
  *
  * @returns SX126x interrupt status
  */
-sx126x_irq_mask_t ral_sx126x_convert_irq_flags_from_ral( ral_irq_t ral_irq );
+static sx126x_irq_mask_t ral_sx126x_convert_irq_flags_from_ral( ral_irq_t ral_irq );
 
 /**
  * @brief Convert GFSK modulation parameters from RAL context to SX126x context
@@ -260,8 +260,8 @@ sx126x_irq_mask_t ral_sx126x_convert_irq_flags_from_ral( ral_irq_t ral_irq );
  *
  * @returns Operation status
  */
-ral_status_t ral_sx126x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
-                                                          sx126x_mod_params_gfsk_t*    radio_mod_params );
+static ral_status_t ral_sx126x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
+                                                                 sx126x_mod_params_gfsk_t*    radio_mod_params );
 
 /**
  * @brief Convert GFSK packet parameters from RAL context to SX126x context
@@ -271,8 +271,8 @@ ral_status_t ral_sx126x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx126x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
-                                                          sx126x_pkt_params_gfsk_t*    radio_pkt_params );
+static ral_status_t ral_sx126x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
+                                                                 sx126x_pkt_params_gfsk_t*    radio_pkt_params );
 
 /**
  * @brief Convert LoRa modulation parameters from RAL context to SX126x context
@@ -282,8 +282,8 @@ ral_status_t ral_sx126x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx126x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
-                                                          sx126x_mod_params_lora_t*    radio_mod_params );
+static ral_status_t ral_sx126x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
+                                                                 sx126x_mod_params_lora_t*    radio_mod_params );
 
 /**
  * @brief Convert LoRa packet parameters from RAL context to SX126x context
@@ -293,8 +293,8 @@ ral_status_t ral_sx126x_convert_lora_mod_params_from_ral( const ral_lora_mod_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx126x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
-                                                          sx126x_pkt_params_lora_t*    radio_pkt_params );
+static ral_status_t ral_sx126x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
+                                                                 sx126x_pkt_params_lora_t*    radio_pkt_params );
 
 /**
  * @brief Convert LoRa coding rate value from SX126x context to RAL context
@@ -304,7 +304,7 @@ ral_status_t ral_sx126x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx126x_convert_lora_cr_to_ral( const sx126x_lora_cr_t radio_cr, ral_lora_cr_t* ral_cr );
+static ral_status_t ral_sx126x_convert_lora_cr_to_ral( const sx126x_lora_cr_t radio_cr, ral_lora_cr_t* ral_cr );
 
 /**
  * @brief Convert LoRa CAD parameters from RAL context to SX126x context
@@ -314,8 +314,8 @@ ral_status_t ral_sx126x_convert_lora_cr_to_ral( const sx126x_lora_cr_t radio_cr,
  *
  * @returns Operation status
  */
-ral_status_t ral_sx126x_convert_lora_cad_params_from_ral( const ral_lora_cad_params_t* ral_lora_cad_params,
-                                                          sx126x_cad_params_t*         radio_lora_cad_params );
+static ral_status_t ral_sx126x_convert_lora_cad_params_from_ral( const ral_lora_cad_params_t* ral_lora_cad_params,
+                                                                 sx126x_cad_params_t*         radio_lora_cad_params );
 
 /**
  * @brief Convert LR FHSS params structure from RAL context to SX126x context
@@ -326,8 +326,8 @@ ral_status_t ral_sx126x_convert_lora_cad_params_from_ral( const ral_lora_cad_par
  *
  * @returns Operation status
  */
-void ral_sx126x_convert_lr_fhss_params_from_ral( const ral_lr_fhss_params_t* ral_lr_fhss_params,
-                                                 sx126x_lr_fhss_params_t*    radio_lr_fhss_params );
+static void ral_sx126x_convert_lr_fhss_params_from_ral( const ral_lr_fhss_params_t* ral_lr_fhss_params,
+                                                        sx126x_lr_fhss_params_t*    radio_lr_fhss_params );
 
 /**
  * @brief Configure the crystal trimming capacitor
@@ -1042,8 +1042,9 @@ ral_status_t ral_sx126x_lr_fhss_get_time_on_air_in_ms( const void* context, cons
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx126x_lr_fhss_get_hop_sequence_count( const void* context, const ral_lr_fhss_params_t* lr_fhss_params,
-                                                        unsigned int* hop_sequence_count )
+ral_status_t ral_sx126x_lr_fhss_get_hop_sequence_count( const void*                 context,
+                                                        const ral_lr_fhss_params_t* lr_fhss_params,
+                                                        unsigned int*               hop_sequence_count )
 {
     sx126x_lr_fhss_params_t sx126x_params;
     ral_sx126x_convert_lr_fhss_params_from_ral( lr_fhss_params, &sx126x_params );
@@ -1326,7 +1327,7 @@ ral_status_t ral_sx126x_get_lora_cad_det_peak( const void* context, ral_lora_sf_
  * --- PRIVATE FUNCTIONS DEFINITION --------------------------------------------
  */
 
-ral_irq_t ral_sx126x_convert_irq_flags_to_ral( sx126x_irq_mask_t sx126x_irq )
+static ral_irq_t ral_sx126x_convert_irq_flags_to_ral( sx126x_irq_mask_t sx126x_irq )
 {
     ral_irq_t ral_irq = RAL_IRQ_NONE;
 
@@ -1374,7 +1375,7 @@ ral_irq_t ral_sx126x_convert_irq_flags_to_ral( sx126x_irq_mask_t sx126x_irq )
     return ral_irq;
 }
 
-sx126x_irq_mask_t ral_sx126x_convert_irq_flags_from_ral( ral_irq_t ral_irq )
+static sx126x_irq_mask_t ral_sx126x_convert_irq_flags_from_ral( ral_irq_t ral_irq )
 {
     sx126x_irq_mask_t sx126x_irq_mask = SX126X_IRQ_NONE;
 
@@ -1423,8 +1424,8 @@ sx126x_irq_mask_t ral_sx126x_convert_irq_flags_from_ral( ral_irq_t ral_irq )
     return sx126x_irq_mask;
 }
 
-ral_status_t ral_sx126x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
-                                                          sx126x_mod_params_gfsk_t*    radio_mod_params )
+static ral_status_t ral_sx126x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
+                                                                 sx126x_mod_params_gfsk_t*    radio_mod_params )
 {
     ral_status_t status       = RAL_STATUS_ERROR;
     uint8_t      bw_dsb_param = 0;
@@ -1475,8 +1476,8 @@ ral_status_t ral_sx126x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_par
     return status;
 }
 
-ral_status_t ral_sx126x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
-                                                          sx126x_pkt_params_gfsk_t*    radio_pkt_params )
+static ral_status_t ral_sx126x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
+                                                                 sx126x_pkt_params_gfsk_t*    radio_pkt_params )
 {
     radio_pkt_params->preamble_len_in_bits = ral_pkt_params->preamble_len_in_bits;
 
@@ -1612,8 +1613,8 @@ ral_status_t ral_sx126x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx126x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
-                                                          sx126x_mod_params_lora_t*    radio_mod_params )
+static ral_status_t ral_sx126x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
+                                                                 sx126x_mod_params_lora_t*    radio_mod_params )
 {
     radio_mod_params->sf = ( sx126x_lora_sf_t ) ral_mod_params->sf;
 
@@ -1682,8 +1683,8 @@ ral_status_t ral_sx126x_convert_lora_mod_params_from_ral( const ral_lora_mod_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx126x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
-                                                          sx126x_pkt_params_lora_t*    radio_pkt_params )
+static ral_status_t ral_sx126x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
+                                                                 sx126x_pkt_params_lora_t*    radio_pkt_params )
 {
     radio_pkt_params->preamble_len_in_symb = ral_pkt_params->preamble_len_in_symb;
 
@@ -1712,7 +1713,7 @@ ral_status_t ral_sx126x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx126x_convert_lora_cr_to_ral( const sx126x_lora_cr_t radio_cr, ral_lora_cr_t* ral_cr )
+static ral_status_t ral_sx126x_convert_lora_cr_to_ral( const sx126x_lora_cr_t radio_cr, ral_lora_cr_t* ral_cr )
 {
     switch( radio_cr )
     {
@@ -1734,8 +1735,8 @@ ral_status_t ral_sx126x_convert_lora_cr_to_ral( const sx126x_lora_cr_t radio_cr,
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx126x_convert_lora_cad_params_from_ral( const ral_lora_cad_params_t* ral_lora_cad_params,
-                                                          sx126x_cad_params_t*         radio_lora_cad_params )
+static ral_status_t ral_sx126x_convert_lora_cad_params_from_ral( const ral_lora_cad_params_t* ral_lora_cad_params,
+                                                                 sx126x_cad_params_t*         radio_lora_cad_params )
 {
     switch( ral_lora_cad_params->cad_symb_nb )
     {
@@ -1802,8 +1803,8 @@ ral_status_t ral_sx126x_convert_lora_cad_params_from_ral( const ral_lora_cad_par
     return RAL_STATUS_OK;
 }
 
-void ral_sx126x_convert_lr_fhss_params_from_ral( const ral_lr_fhss_params_t* ral_lr_fhss_params,
-                                                 sx126x_lr_fhss_params_t*    radio_lr_fhss_params )
+static void ral_sx126x_convert_lr_fhss_params_from_ral( const ral_lr_fhss_params_t* ral_lr_fhss_params,
+                                                        sx126x_lr_fhss_params_t*    radio_lr_fhss_params )
 {
     *radio_lr_fhss_params = ( sx126x_lr_fhss_params_t ){
         .lr_fhss_params           = ral_lr_fhss_params->lr_fhss_params,

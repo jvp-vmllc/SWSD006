@@ -174,7 +174,8 @@ static const uint32_t ral_sx128x_convert_tx_dbm_to_ua_reg_mode_ldo[] = {
  * @warning This function rounds the preamble length up to the next valid mantissa/exponent pair, and clamps the value
  * to the maximum value 61440
  */
-sx128x_lora_ranging_preamble_len_t ral_sx128x_convert_lora_pbl_len_from_ral( const uint16_t preamble_len_in_symb );
+static sx128x_lora_ranging_preamble_len_t ral_sx128x_convert_lora_pbl_len_from_ral(
+    const uint16_t preamble_len_in_symb );
 
 /**
  * @brief Convert interrupt flags from SX128x context to RAL context
@@ -183,7 +184,7 @@ sx128x_lora_ranging_preamble_len_t ral_sx128x_convert_lora_pbl_len_from_ral( con
  *
  * @returns RAL interrupt status
  */
-ral_irq_t ral_sx128x_convert_irq_flags_to_ral( sx128x_irq_mask_t sx128x_irq );
+static ral_irq_t ral_sx128x_convert_irq_flags_to_ral( sx128x_irq_mask_t sx128x_irq );
 
 /**
  * @brief Convert interrupt flags from RAL context to SX128x context
@@ -192,7 +193,7 @@ ral_irq_t ral_sx128x_convert_irq_flags_to_ral( sx128x_irq_mask_t sx128x_irq );
  *
  * @returns sx128x_irq SX128x interrupt status
  */
-sx128x_irq_mask_t ral_sx128x_convert_irq_flags_from_ral( ral_irq_t ral_irq );
+static sx128x_irq_mask_t ral_sx128x_convert_irq_flags_from_ral( ral_irq_t ral_irq );
 
 /**
  * @brief Convert GFSK modulation parameters from RAL context to SX128x context
@@ -202,8 +203,8 @@ sx128x_irq_mask_t ral_sx128x_convert_irq_flags_from_ral( ral_irq_t ral_irq );
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
-                                                          sx128x_mod_params_gfsk_t*    radio_mod_params );
+static ral_status_t ral_sx128x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
+                                                                 sx128x_mod_params_gfsk_t*    radio_mod_params );
 
 /**
  * @brief Convert GFSK packet parameters from RAL context to SX128x context
@@ -213,8 +214,8 @@ ral_status_t ral_sx128x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
-                                                          sx128x_pkt_params_gfsk_t*    radio_pkt_params );
+static ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
+                                                                 sx128x_pkt_params_gfsk_t*    radio_pkt_params );
 
 /**
  * @brief Convert LoRa modulation parameters from RAL context to SX128x context
@@ -224,8 +225,8 @@ ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
-                                                          sx128x_mod_params_lora_t*    radio_mod_params );
+static ral_status_t ral_sx128x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
+                                                                 sx128x_mod_params_lora_t*    radio_mod_params );
 
 /**
  * @brief Convert LoRa packet parameters from RAL context to SX128x context
@@ -235,8 +236,8 @@ ral_status_t ral_sx128x_convert_lora_mod_params_from_ral( const ral_lora_mod_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
-                                                          sx128x_pkt_params_lora_t*    radio_pkt_params );
+static ral_status_t ral_sx128x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
+                                                                 sx128x_pkt_params_lora_t*    radio_pkt_params );
 
 /**
  * @brief Convert LoRa coding rate value from RAL context to SX128x context
@@ -246,7 +247,7 @@ ral_status_t ral_sx128x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_lora_bw_from_radio( const ral_lora_bw_t ral_bw, sx128x_lora_bw_t* radio_bw );
+static ral_status_t ral_sx128x_convert_lora_bw_from_radio( const ral_lora_bw_t ral_bw, sx128x_lora_bw_t* radio_bw );
 
 /**
  * @brief Convert LoRa coding rate value from SX128x context to RAL context
@@ -256,7 +257,7 @@ ral_status_t ral_sx128x_convert_lora_bw_from_radio( const ral_lora_bw_t ral_bw, 
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_lora_cr_to_ral( const sx128x_lora_ranging_cr_t radio_cr, ral_lora_cr_t* ral_cr );
+static ral_status_t ral_sx128x_convert_lora_cr_to_ral( const sx128x_lora_ranging_cr_t radio_cr, ral_lora_cr_t* ral_cr );
 
 /**
  * @brief Convert FLRC modulation parameters from RAL context to SX128x context
@@ -266,8 +267,8 @@ ral_status_t ral_sx128x_convert_lora_cr_to_ral( const sx128x_lora_ranging_cr_t r
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_flrc_mod_params_from_ral( const ral_flrc_mod_params_t* ral_mod_params,
-                                                          sx128x_mod_params_flrc_t*    radio_mod_params );
+static ral_status_t ral_sx128x_convert_flrc_mod_params_from_ral( const ral_flrc_mod_params_t* ral_mod_params,
+                                                                 sx128x_mod_params_flrc_t*    radio_mod_params );
 
 /**
  * @brief Convert FLRC packet parameters from RAL context to SX128x context
@@ -277,8 +278,8 @@ ral_status_t ral_sx128x_convert_flrc_mod_params_from_ral( const ral_flrc_mod_par
  *
  * @returns Operation status
  */
-ral_status_t ral_sx128x_convert_flrc_pkt_params_from_ral( const ral_flrc_pkt_params_t* ral_pkt_params,
-                                                          sx128x_pkt_params_flrc_t*    radio_pkt_params );
+static ral_status_t ral_sx128x_convert_flrc_pkt_params_from_ral( const ral_flrc_pkt_params_t* ral_pkt_params,
+                                                                 sx128x_pkt_params_flrc_t*    radio_pkt_params );
 
 /*
  * -----------------------------------------------------------------------------
@@ -954,8 +955,9 @@ ral_status_t ral_sx128x_lr_fhss_get_time_on_air_in_ms( const void* context, cons
     return RAL_STATUS_UNSUPPORTED_FEATURE;
 }
 
-ral_status_t ral_sx128x_lr_fhss_get_hop_sequence_count( const void* context, const ral_lr_fhss_params_t* lr_fhss_params,
-                                                        unsigned int* hop_sequence_count )
+ral_status_t ral_sx128x_lr_fhss_get_hop_sequence_count( const void*                 context,
+                                                        const ral_lr_fhss_params_t* lr_fhss_params,
+                                                        unsigned int*               hop_sequence_count )
 {
     ( void ) context;             // Unused parameter
     ( void ) lr_fhss_params;      // Unused parameter
@@ -1187,7 +1189,8 @@ static uint8_t shift_and_count_trailing_zeros( uint16_t* x )
     return exponent;
 }
 
-sx128x_lora_ranging_preamble_len_t ral_sx128x_convert_lora_pbl_len_from_ral( const uint16_t preamble_len_in_symb )
+static sx128x_lora_ranging_preamble_len_t ral_sx128x_convert_lora_pbl_len_from_ral(
+    const uint16_t preamble_len_in_symb )
 {
     if( preamble_len_in_symb >= 61440 )
     {
@@ -1215,7 +1218,7 @@ sx128x_lora_ranging_preamble_len_t ral_sx128x_convert_lora_pbl_len_from_ral( con
     };
 }
 
-ral_status_t ral_sx128x_convert_lora_bw_from_radio( const ral_lora_bw_t bw, sx128x_lora_bw_t* sx128x_bw )
+static ral_status_t ral_sx128x_convert_lora_bw_from_radio( const ral_lora_bw_t bw, sx128x_lora_bw_t* sx128x_bw )
 {
     switch( bw )
     {
@@ -1237,7 +1240,7 @@ ral_status_t ral_sx128x_convert_lora_bw_from_radio( const ral_lora_bw_t bw, sx12
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx128x_convert_lora_cr_to_ral( const sx128x_lora_ranging_cr_t radio_cr, ral_lora_cr_t* ral_cr )
+static ral_status_t ral_sx128x_convert_lora_cr_to_ral( const sx128x_lora_ranging_cr_t radio_cr, ral_lora_cr_t* ral_cr )
 {
     switch( radio_cr )
     {
@@ -1268,7 +1271,7 @@ ral_status_t ral_sx128x_convert_lora_cr_to_ral( const sx128x_lora_ranging_cr_t r
     return RAL_STATUS_OK;
 }
 
-ral_irq_t ral_sx128x_convert_irq_flags_to_ral( sx128x_irq_mask_t sx128x_irq )
+static ral_irq_t ral_sx128x_convert_irq_flags_to_ral( sx128x_irq_mask_t sx128x_irq )
 {
     ral_irq_t ral_irq = RAL_IRQ_NONE;
 
@@ -1313,7 +1316,7 @@ ral_irq_t ral_sx128x_convert_irq_flags_to_ral( sx128x_irq_mask_t sx128x_irq )
     return ral_irq;
 }
 
-sx128x_irq_mask_t ral_sx128x_convert_irq_flags_from_ral( ral_irq_t ral_irq )
+static sx128x_irq_mask_t ral_sx128x_convert_irq_flags_from_ral( ral_irq_t ral_irq )
 {
     sx128x_irq_mask_t sx128x_irq_mask = SX128X_IRQ_NONE;
 
@@ -1359,8 +1362,8 @@ sx128x_irq_mask_t ral_sx128x_convert_irq_flags_from_ral( ral_irq_t ral_irq )
     return sx128x_irq_mask;
 }
 
-ral_status_t ral_sx128x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
-                                                          sx128x_mod_params_gfsk_t*    radio_mod_params )
+static ral_status_t ral_sx128x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_params_t* ral_mod_params,
+                                                                 sx128x_mod_params_gfsk_t*    radio_mod_params )
 {
     ral_status_t status = RAL_STATUS_ERROR;
 
@@ -1406,8 +1409,8 @@ ral_status_t ral_sx128x_convert_gfsk_mod_params_from_ral( const ral_gfsk_mod_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
-                                                          sx128x_pkt_params_gfsk_t*    radio_pkt_params )
+static ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_params_t* ral_pkt_params,
+                                                                 sx128x_pkt_params_gfsk_t*    radio_pkt_params )
 {
     unsigned int sync_word_len_in_bytes = ral_pkt_params->sync_word_len_in_bits / 8;
 
@@ -1421,7 +1424,7 @@ ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
         return RAL_STATUS_UNKNOWN_VALUE;
     }
 
-    radio_pkt_params->sync_word_len   = ( sx128x_gfsk_sync_word_len_t ) ( ( sync_word_len_in_bytes - 1 ) << 1 );
+    radio_pkt_params->sync_word_len   = ( sx128x_gfsk_sync_word_len_t )( ( sync_word_len_in_bytes - 1 ) << 1 );
     radio_pkt_params->match_sync_word = SX128X_GFSK_FLRC_RX_MATCH_SYNCWORD_1;
 
     unsigned int preamble_len_in_nibbles = ral_pkt_params->preamble_len_in_bits / 4;
@@ -1435,7 +1438,7 @@ ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
         return RAL_STATUS_UNKNOWN_VALUE;
     }
 
-    radio_pkt_params->preamble_len = ( sx128x_gfsk_preamble_len_t ) ( ( preamble_len_in_nibbles - 1 ) << 4 );
+    radio_pkt_params->preamble_len = ( sx128x_gfsk_preamble_len_t )( ( preamble_len_in_nibbles - 1 ) << 4 );
 
     radio_pkt_params->header_type = ( ral_pkt_params->header_type == RAL_GFSK_PKT_FIX_LEN )
                                         ? SX128X_GFSK_FLRC_PKT_FIX_LEN
@@ -1483,7 +1486,7 @@ ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
     radio_pkt_params->dc_free = ( ral_pkt_params->dc_free == RAL_GFSK_DC_FREE_WHITENING )
                                     ? SX128X_GFSK_FLRC_BLE_DC_FREE_ON
                                     : SX128X_GFSK_FLRC_BLE_DC_FREE_OFF;
-
+    
     switch( ral_pkt_params->dc_free )
     {
     case RAL_GFSK_DC_FREE_OFF:
@@ -1506,10 +1509,10 @@ ral_status_t ral_sx128x_convert_gfsk_pkt_params_from_ral( const ral_gfsk_pkt_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx128x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
-                                                          sx128x_mod_params_lora_t*    radio_mod_params )
+static ral_status_t ral_sx128x_convert_lora_mod_params_from_ral( const ral_lora_mod_params_t* ral_mod_params,
+                                                                 sx128x_mod_params_lora_t*    radio_mod_params )
 {
-    radio_mod_params->sf = ( sx128x_lora_sf_t ) ( ral_mod_params->sf << 4 );
+    radio_mod_params->sf = ( sx128x_lora_sf_t )( ral_mod_params->sf << 4 );
 
     ral_status_t status = ral_sx128x_convert_lora_bw_from_radio( ral_mod_params->bw, &radio_mod_params->bw );
     if( status != RAL_STATUS_OK )
@@ -1547,8 +1550,8 @@ ral_status_t ral_sx128x_convert_lora_mod_params_from_ral( const ral_lora_mod_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx128x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
-                                                          sx128x_pkt_params_lora_t*    radio_pkt_params )
+static ral_status_t ral_sx128x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_params_t* ral_pkt_params,
+                                                                 sx128x_pkt_params_lora_t*    radio_pkt_params )
 {
     radio_pkt_params->preamble_len = ral_sx128x_convert_lora_pbl_len_from_ral( ral_pkt_params->preamble_len_in_symb );
 
@@ -1577,8 +1580,8 @@ ral_status_t ral_sx128x_convert_lora_pkt_params_from_ral( const ral_lora_pkt_par
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx128x_convert_flrc_mod_params_from_ral( const ral_flrc_mod_params_t* ral_mod_params,
-                                                          sx128x_mod_params_flrc_t*    radio_mod_params )
+static ral_status_t ral_sx128x_convert_flrc_mod_params_from_ral( const ral_flrc_mod_params_t* ral_mod_params,
+                                                                 sx128x_mod_params_flrc_t*    radio_mod_params )
 {
     ral_status_t status = RAL_STATUS_ERROR;
 
@@ -1609,15 +1612,15 @@ ral_status_t ral_sx128x_convert_flrc_mod_params_from_ral( const ral_flrc_mod_par
 
     *radio_mod_params = ( sx128x_mod_params_flrc_t ){
         .br_bw       = br_bw_dsb_param,
-        .cr          = ( sx128x_flrc_cr_t ) ( ral_mod_params->cr << 1 ),
+        .cr          = ( sx128x_flrc_cr_t )( ral_mod_params->cr << 1 ),
         .pulse_shape = pulse_shape,
     };
 
     return RAL_STATUS_OK;
 }
 
-ral_status_t ral_sx128x_convert_flrc_pkt_params_from_ral( const ral_flrc_pkt_params_t* ral_pkt_params,
-                                                          sx128x_pkt_params_flrc_t*    radio_pkt_params )
+static ral_status_t ral_sx128x_convert_flrc_pkt_params_from_ral( const ral_flrc_pkt_params_t* ral_pkt_params,
+                                                                 sx128x_pkt_params_flrc_t*    radio_pkt_params )
 {
     unsigned int preamble_len_in_nibbles = ral_pkt_params->preamble_len_in_bits / 4;
     if( ral_pkt_params->preamble_len_in_bits % 4 != 0 )
@@ -1631,7 +1634,7 @@ ral_status_t ral_sx128x_convert_flrc_pkt_params_from_ral( const ral_flrc_pkt_par
     }
 
     *radio_pkt_params = ( sx128x_pkt_params_flrc_t ){
-        .preamble_len = ( sx128x_gfsk_preamble_len_t ) ( ( preamble_len_in_nibbles - 1 ) << 4 ),
+        .preamble_len = ( sx128x_gfsk_preamble_len_t )( ( preamble_len_in_nibbles - 1 ) << 4 ),
         .sync_word_len =
             ( ral_pkt_params->sync_word_is_on == true ) ? SX128X_FLRC_SYNC_WORD_ON : SX128X_FLRC_SYNC_WORD_OFF,
         .match_sync_word  = SX128X_GFSK_FLRC_RX_MATCH_SYNCWORD_1,
