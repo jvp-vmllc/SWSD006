@@ -15,7 +15,7 @@ command:
 ```shell
 # when doing this from bash terminal started from nordic's toolchain manager, unset ZEPHYR_BASE
 # initialize my-workspace, where 'my-workspace" can be a directory name of your choice
-west init -m https://github.com/Lora-net/SWDR006 --mr v2.6.1 my-workspace
+west init -m https://github.com/Lora-net/SWSD006 --mr v2.6.1 my-workspace
 
 # update nRF Connect SDK modules
 cd my-workspace
