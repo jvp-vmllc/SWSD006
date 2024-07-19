@@ -1,4 +1,23 @@
-# LR11xx support and LoRa Basics Modem for sdk-sidewalk v2.6.1
+# SWSD006 - LR11xx Multi-stack Software Development Kit for nRF52840
+
+SWSD006 is a collection of driver, protocol stack and utility software that facilitates development of Sidewalk
+applications. The software includes numerous examples of how to leverage the unique capabilities of Semtech's LR11xx silicon. 
+While the software targets the Nordic nRF52840 MCU, it is designed and distributed as a "full-source" offering, it enables users to modify
+the contents across multiple layers of software stack. Potential modifications include re-targeting of host MCU and LR11xx silicon,
+changes to the platform abstraction layer and enhancement of the packet fragmentation scheme. 
+Please note that while software enhancement is enabled and encouraged, validation of described functionality was exclusively performed on the specified silicon variants and software component versions.
+
+This repository implements the following functionality:
+- LR11xx transceiver silicon support for Sidewalk MAC v1.16 CSS and FSK modulation 
+- Drivers and examples demonstrating WIFI/GNSS NAV3 geolocation features of LR11xx silicon
+- LoRaWAN Class A multi-stack operation using SWL2001 - LoRa Basics MOdem 4.5.0; programmatic control over both LoRaWAN and Sidewalk in one FW image
+- LR11xx transceiver firmware upgrade via SWTL001 port to nRF52840
+- LoRaWAN Class A + WIFI/GNSS NAV3 operation example
+- An example of packet fragmentation and re-assembly (overcomes CSS packet size limitations in Sidewalk)
+- AWS lambda example code demonstrating End-to-End handling of LoRa EDGE application data: from transceiver to cloud service 
+- A Zephyr compliant T2 topology supporting 3rd party extension of Nordic's VS Code IDE
+- 'sid_dut' operation with LR11xx silicon, enabling Sidewalk Device Qualification testing
+- A full-source platform abstraction layer supporting user customization of RF front-end designs and control paradigms 
 
 ## Getting started
 
