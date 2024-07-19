@@ -10,7 +10,7 @@ Please note that while software enhancement is enabled and encouraged, validatio
 This repository implements the following functionality:
 - LR11xx transceiver silicon support for Sidewalk MAC v1.16 CSS and FSK modulation 
 - Drivers and examples demonstrating WIFI/GNSS NAV3 geolocation features of LR11xx silicon
-- LoRaWAN Class A multi-stack operation using SWL2001 - LoRa Basics MOdem 4.5.0; programmatic control over both LoRaWAN and Sidewalk in one FW image
+- LoRaWAN Class A multi-stack operation using SWL2001 - LoRa Basics Modem 4.5.0; programmatic control over both LoRaWAN and Sidewalk stacks in one FW image
 - LR11xx transceiver firmware upgrade via SWTL001 port to nRF52840
 - LoRaWAN Class A + WIFI/GNSS NAV3 operation example
 - An example of packet fragmentation and re-assembly (overcomes CSS packet size limitations in Sidewalk)
