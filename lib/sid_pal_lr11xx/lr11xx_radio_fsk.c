@@ -3,6 +3,7 @@
  *
  * This file supports radio hal interface  specific to FSK
  * Some parts of the the code are based on Semtech reference driver
+ * This file is modified by Semtech
  */
 #include <assert.h>
 

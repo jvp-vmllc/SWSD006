@@ -2,6 +2,7 @@
  * Copyright (c) 2019-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * This file is exposed to each procuct configuration to customize the driver behavior
+ * This file is modified by Semtech
  */
 
 #ifndef LR11XX_CONFIG_H

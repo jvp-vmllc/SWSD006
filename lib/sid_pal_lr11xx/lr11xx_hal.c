@@ -2,7 +2,8 @@
  * Copyright (c) 2019-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * This file defines interface used by Semtech driver to perform platform specific
- * operations
+ * operations.
+ * This file is modified by Semtech
  */
 
 #include <assert.h>

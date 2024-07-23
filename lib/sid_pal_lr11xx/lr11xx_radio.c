@@ -2,6 +2,7 @@
  * Copyright (c) 2019-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * This file supports radio HAL interface
+ * This file is modified by Semtech
  */
 
 #define HALO_NEEDS_SAFE_ASSERT 1

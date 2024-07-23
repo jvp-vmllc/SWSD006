@@ -1,6 +1,9 @@
 button 4 toggles between operating LBM vs sidewalk  
 button 1 in sidewalk operation, sends uplink, the same as original sid_end_device  
 
+LBM libraries on this platform only support Class A operation in the US 915 region with LR11xx.  
+Other features such as relay, Class B, Class C, FUOTA, CSMA and other such features are **NOT** suppored/validated at this time.
+
 During LBM operation, the four LEDs on the NRF52840-DK are not driven.
 
 ## lorawan build
@@ -13,5 +16,3 @@ lorawan credentials are declared in ``example_options.h``
 ## NAV3 on LBM build
 lorawan credentials are declared in ``example_options.h``  
 ``west build -b nrf52840dk_nrf52840 -- -DOVERLAY_CONFIG=overlay-lbm-nav3lbm.conf``
-
-
