@@ -71,16 +71,27 @@ from the directory ``samples/lbm_sid_end_device`` -->
   * `-DOVERLAY_CONFIG=overlay-nav3lbm.conf``
  * LR11xx firmware update, and almanac erase:
    * build in ``samples/SWTL001``directory
+ 
+## GNSS Performance Evaluation Notice
 
+The included GNSS example source code is provided solely to demonstrate the GNSS scan functionality under ideal conditions.  The source code and GNSS scan results are not representative of the optimal configuration or performance characteristics  of the silicon. The LR11xx product family is flexible and can be emobodied and configured in a multitude of ways to realize  various trade-offs regarding performance, battery life, PCB size, cost, etc. The GNSS example included in this release and the corresponding evaluation  kits are designed & configured by the included source code in a default capacity which is sufficient to demonstrate functional GNSS scan capability only. Care must be taken if/when attempting to assess performance characterstics of GNSS scan functionality and we strongly encourage those conducting such analysis to contact Semtech via the provided support channels so that we can ensure appropriate configuration settings are employed for a given performance evaluation use-case.
+### Supported Semtech DVKs
 
-# GNSS Performance Evaluation Notice
+The following table summarizes the compatability of the reference design firmware with Semtech LR11xx Development Kit PCBs.
 
-The included GNSS example source code is provided solely to demonstrate the GNSS scan functionality under ideal conditions. 
-The source code and GNSS scan results are not representative of the optimal configuration or performance characteristics 
-of the silicon. The LR11xx product family is flexible and can be emobodied and configured in a multitude of ways to realize 
-various trade-offs regarding
-performance, battery life, PCB size, cost, etc. The GNSS example included in this release and the corresponding evaluation 
-kits are designed & configured by the included source code in a default capacity which is sufficient to demonstrate functional
-GNSS scan capability only. Care must be taken if/when attempting to assess performance characterstics of GNSS scan functionality 
-and we strongly encourage those conducting such analysis to contact Semtech via the provided support channels so that we can 
-ensure appropriate configuration settings are employed for a given performance evaluation use-case.
+| Products | Shield PCB# | Shield Note | Operation | LoRaWAN | GNSS/WiFi scan |
+| -------------- | ---------- | -------------- | -----------------  | -----------------  | -----------------  |
+| LR1110MB1DIS   | E516V03A   | LR1110 Passive | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|                | E516V02A/B | LR1110 Passive | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| LR1110MB1DJS   | E592V02A   | LR1110 Active  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|                | E592V01A   | LR1110 Active  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| LR1120MB1DIS   | E655V01A   | LR1120 Passive | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| LR1120MB1DJS   | E656V01A   | LR1120 Active  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| LR1121MB1DIS   | E656V01A   | LR1121         | [^1]                | :heavy_check_mark: | :x:                |
+| SX1262MB2CAS   | E499V01B   | SX1262 shield  | [^1], [^2]            | :heavy_check_mark: | :x:                |
+| (Modification) | (Any)      | XTAL mounted   | [^1]                | :heavy_check_mark: | :x:                |
+| (Modification) | (Any)      | LDO mode       | [^3]                | :heavy_check_mark: | :heavy_check_mark: |
+
+[^1]: XTAL: Specify ``CONFIG_RADIO_TCXO=n`` in the build configuration. The LR1121 and SX126x transceivers do not include GNSS.
+[^2]: SX126x: Specify ``-DCONFIG_RADIO_LR11XX=n``or  ``-DCONFIG_RADIO_SX126X=y`` in the build configuration.
+[^3]: LDO: Specify ``LR11XX_SYSTEM_REG_MODE_LDO`` as the radio regulator mode.
