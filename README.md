@@ -10,7 +10,7 @@ Please note that while software enhancement is enabled and encouraged, validatio
 This repository implements the following functionality:
 - LR11xx transceiver silicon support for Sidewalk MAC v1.16 CSS and FSK modulation 
 - Drivers and examples demonstrating WIFI/GNSS NAV3 geolocation features of LR11xx silicon
-- LoRaWAN Class A multi-stack operation using SWL2001 - LoRa Basics Modem 4.5.0; programmatic control over both LoRaWAN and Sidewalk stacks in one FW image
+- LoRaWAN Class A multi-stack operation using SWL2001 - LoRa Basics Modem 4.5.0; programmatic control over both LoRaWAN and Sidewalk stacks in one firmware image
 - LR11xx transceiver firmware upgrade via SWTL001 port to nRF52840
 - LoRaWAN Class A + WIFI/GNSS NAV3 operation example
 - An example of packet fragmentation and re-assembly (overcomes CSS packet size limitations in Sidewalk)
@@ -48,8 +48,6 @@ CONFIG_SIDEWALK_LINK_MASK_FSK=y # run sidewalk in FSK
 CONFIG_RADIO_LR11XX=y  # use LR11xx instead of sx126x
 CONFIG_RADIO_TCXO=y  # set to n if using crystal on LR11xx instead of TCXO
 ```
-for the building & running  ``template_lbm`` application, see the readme in ``template_lbm`` subdirectory  
-
 ### Available example applications:
 all example apps are built using ``west build -b <board> -- -DOVERLAY_CONFIG=foobar.conf``.  The app to build is selected by adding ``-- -DOVERLAY_CONFIG=foobar.conf``
  * the full build command, for example: ``west build -b nrf52840dk_nrf52840 -- -DOVERLAY_CONFIG=overlay-nav3sid.conf``
@@ -74,10 +72,10 @@ from the directory ``samples/lbm_sid_end_device`` -->
  
 ## GNSS Performance Evaluation Notice
 
-The included GNSS example source code is provided solely to demonstrate the GNSS scan functionality under ideal conditions.  The source code and GNSS scan results are not representative of the optimal configuration or performance characteristics  of the silicon. The LR11xx product family is flexible and can be emobodied and configured in a multitude of ways to realize  various trade-offs regarding performance, battery life, PCB size, cost, etc. The GNSS example included in this release and the corresponding evaluation  kits are designed & configured by the included source code in a default capacity which is sufficient to demonstrate functional GNSS scan capability only. Care must be taken if/when attempting to assess performance characterstics of GNSS scan functionality and we strongly encourage those conducting such analysis to contact Semtech via the provided support channels so that we can ensure appropriate configuration settings are employed for a given performance evaluation use-case.
+The included GNSS example source code is provided solely to demonstrate the GNSS scan functionality under ideal conditions.  The source code and GNSS scan results are not representative of the optimal configuration or performance characteristics  of the silicon. The LR11xx product family is flexible and can be embodied and configured in a multitude of ways to realize  various trade-offs regarding performance, battery life, PCB size, cost, etc. The GNSS example included in this release and the corresponding evaluation  kits are designed & configured by the included source code in a default capacity which is sufficient to demonstrate functional GNSS scan capability only. Care must be taken if/when attempting to assess performance characteristics of GNSS scan functionality and we strongly encourage those conducting such analysis to contact Semtech via the provided support channels so that we can ensure appropriate configuration settings are employed for a given performance evaluation use-case.
 ### Supported Semtech DVKs
 
-The following table summarizes the compatability of the reference design firmware with Semtech LR11xx Development Kit PCBs.
+The following table summarizes the compatibility of the reference design firmware with Semtech LR11xx Development Kit PCBs.
 
 | Products | Shield PCB# | Shield Note | Operation | LoRaWAN | GNSS/WiFi scan |
 | -------------- | ---------- | -------------- | -----------------  | -----------------  | -----------------  |
