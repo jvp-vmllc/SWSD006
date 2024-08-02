@@ -48,6 +48,10 @@ CONFIG_SIDEWALK_LINK_MASK_FSK=y # run sidewalk in FSK
 CONFIG_RADIO_LR11XX=y  # use LR11xx instead of sx126x
 CONFIG_RADIO_TCXO=y  # set to n if using crystal on LR11xx instead of TCXO
 ```
+Devices LR1110 and LR1120 and LR1121 have compatible SPI instructions.  This software will function with all these devices without modification, except for the ``CONFIG_RADIO_TCXO`` must be configured correctly for the 32MHz reference populated on-board with the radio transceiver.  
+LR1121 device would typically be used with an XTAL, since it doesnt have GNSS functionality: ``CONFIG_RADIO_TCXO=n`` for reference crystal.  
+
+All radio other configuration is declared in ``app_subGHz_config_lr11xx.c``, For example if you wanted to use the radio's LDO instead of it's DC-DC, you can modify the ``.regulator_mode = `` to ``LR11XX_SYSTEM_REG_MODE_LDO``
 ### Available example applications:
 all example apps are built using ``west build -b <board> -- -DOVERLAY_CONFIG=foobar.conf``.  The app to build is selected by adding ``-- -DOVERLAY_CONFIG=foobar.conf``
  * the full build command, for example: ``west build -b nrf52840dk_nrf52840 -- -DOVERLAY_CONFIG=overlay-nav3sid.conf``
@@ -93,3 +97,6 @@ The following table summarizes the compatibility of the reference design firmwar
 [^1]: XTAL: Specify ``CONFIG_RADIO_TCXO=n`` in the build configuration. The LR1121 and SX126x transceivers do not include GNSS.
 [^2]: SX126x: Specify ``-DCONFIG_RADIO_LR11XX=n``or  ``-DCONFIG_RADIO_SX126X=y`` in the build configuration.
 [^3]: LDO: Specify ``LR11XX_SYSTEM_REG_MODE_LDO`` as the radio regulator mode.
+
+
+
