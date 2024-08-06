@@ -1595,6 +1595,7 @@ int32_t sid_pal_radio_init(sid_pal_radio_event_notify_t notify, sid_pal_radio_ir
 			err = RADIO_ERROR_IO_ERROR;
 			break;
 		}
+		drv_ctx.sleeping = false;   // the radio is in standby mode after hardware reset
 
 		if (lr11xx_system_get_version(&drv_ctx,&drv_ctx.ver) != LR11XX_STATUS_OK) {
 			err = RADIO_ERROR_IO_ERROR;
