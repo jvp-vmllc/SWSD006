@@ -40,6 +40,7 @@ west init -m https://github.com/Lora-net/SWSD006 --mr v2.6.1 my-workspace
 cd my-workspace
 west update
 ```
+If you intend to build a LoRa Basics Modem project on the windows platform,  decide on a workspace location as near the root directory as possible in order to prevent path lengths that exceed the capability of the zephyr build system on windows.  This is not a concern on other platforms such as linux.
 ### configuring project for LR11xx
 edit the project's ``.conf`` (default is ``prj.conf``)
 ```
@@ -77,6 +78,8 @@ from the directory ``samples/lbm_sid_end_device`` -->
 ## GNSS Performance Evaluation Notice
 
 The included GNSS example source code is provided solely to demonstrate the GNSS scan functionality under ideal conditions.  The source code and GNSS scan results are not representative of the optimal configuration or performance characteristics  of the silicon. The LR11xx product family is flexible and can be embodied and configured in a multitude of ways to realize  various trade-offs regarding performance, battery life, PCB size, cost, etc. The GNSS example included in this release and the corresponding evaluation  kits are designed & configured by the included source code in a default capacity which is sufficient to demonstrate functional GNSS scan capability only. Care must be taken if/when attempting to assess performance characteristics of GNSS scan functionality and we strongly encourage those conducting such analysis to contact Semtech via the provided support channels so that we can ensure appropriate configuration settings are employed for a given performance evaluation use-case.
+### LoRa Basics Modem project organization
+LoRa Basics Modem (LBM) library exists as a zephyr module in this project.  LBM resides as branches in this repository.  For example, branches ``lbm_v431`` and ``lbm_v450``are different versions of LBM provided as a zephyr module.  The purpose of presenting LBM as zephyr module is to minimize the path lengths given to the zephyr build system, which is required to accommodate path length restrictions on the windows platform.
 ### Supported Semtech DVKs
 
 The following table summarizes the compatibility of the reference design firmware with Semtech LR11xx Development Kit PCBs.
@@ -97,6 +100,3 @@ The following table summarizes the compatibility of the reference design firmwar
 [^1]: XTAL: Specify ``CONFIG_RADIO_TCXO=n`` in the build configuration. The LR1121 and SX126x transceivers do not include GNSS.
 [^2]: SX126x: Specify ``-DCONFIG_RADIO_LR11XX=n``or  ``-DCONFIG_RADIO_SX126X=y`` in the build configuration.
 [^3]: LDO: Specify ``LR11XX_SYSTEM_REG_MODE_LDO`` as the radio regulator mode.
-
-
-
