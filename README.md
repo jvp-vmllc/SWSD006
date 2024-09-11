@@ -7,7 +7,7 @@ the contents across multiple layers of software stack. Potential modifications i
 changes to the platform abstraction layer and enhancement of the packet fragmentation scheme. 
 Please note that while software enhancement is enabled and encouraged, validation of described functionality was exclusively performed on the specified silicon variants and software component versions.
 
-This repository implements the following functionality:
+#### This repository implements the following functionality:
 - LR11xx transceiver silicon support for Sidewalk MAC v1.16 CSS and FSK modulation 
 - Drivers and examples demonstrating WIFI/GNSS NAV3 geolocation features of LR11xx silicon
 - LoRaWAN Class A multi-stack operation using SWL2001 - LoRa Basics Modem 4.5.0; programmatic control over both LoRaWAN and Sidewalk stacks in one firmware image
@@ -18,6 +18,9 @@ This repository implements the following functionality:
 - A Zephyr compliant T2 topology supporting 3rd party extension of Nordic's VS Code IDE
 - 'sid_dut' operation with LR11xx silicon, enabling Sidewalk Device Qualification testing
 - A full-source platform abstraction layer supporting user customization of RF front-end designs and control paradigms 
+#### LoRa Basics Modem unsupported operation
+  * Class B and Class C operation are not validated or supported.
+  *  features Relay Tx/Rx, FUOTA, GNSS store/forward are not supported
 
 ## Getting started
 
@@ -56,6 +59,8 @@ All radio other configuration is declared in ``app_subGHz_config_lr11xx.c``, For
 ### Available example applications:
 all example apps are built using ``west build -b <board> -- -DOVERLAY_CONFIG=foobar.conf``.  The app to build is selected by adding ``-- -DOVERLAY_CONFIG=foobar.conf``
  * the full build command, for example: ``west build -b nrf52840dk_nrf52840 -- -DOVERLAY_CONFIG=overlay-nav3sid.conf``
+
+The vscode equivalent is at **Edit Build Configuration** in the nrf connect plugin for vscode, select a ``prj.conf`` for **Base Configuration file**, and then ``overlay-*.conf`` for **Extra Kconfig fragment**
 #### apps provided by Nordic:
 from the directory ``samples/sid_end_device`` enables LR11xx in ``prj.conf`` -->
 * hello
