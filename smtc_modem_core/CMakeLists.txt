@@ -59,6 +59,12 @@ else()
             geolocation_services/mw_gnss_send.c
         )
     endif()
+
+	if(CONFIG_ADD_LBM_CLASS_C)
+		target_compile_definitions(smtc_lbm INTERFACE ADD_CLASS_C)
+		target_include_directories(smtc_lbm INTERFACE lr1mac/src/lr1mac_class_c)
+		set(LBM_SOURCE ${LBM_SOURCE} lr1mac/src/lr1mac_class_c/lr1mac_class_c.c)
+	endif()
 endif()
 
 if(CONFIG_RADIO_LR11XX)
