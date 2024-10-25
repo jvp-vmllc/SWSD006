@@ -9,6 +9,14 @@ zephyr_include_directories(
 
 zephyr_interface_library_named(smtc_lbm)
 
+# Use Cryptographic Engine of LR1121
+if (CONFIG_USE_CRYPTO_ENGINE)
+	target_compile_definitions(smtc_lbm INTERFACE USE_LR11XX_CE)
+	set(CRYPTO_ENGINE smtc_modem_crypto/lr11xx_crypto_engine/lr11xx_ce.c)
+else()
+	set(CRYPTO_ENGINE smtc_modem_crypto/soft_secure_element/soft_se.c)
+endif()
+
 if(DEFINED PORTING_TEST)
 	set(LBM_SOURCE
 		${RADIO_SRC}
@@ -22,7 +30,7 @@ else()
 		modem_supervisor/modem_supervisor_light.c
 		lorawan_api/lorawan_api.c
 		radio_planner/src/radio_planner.c
-		smtc_modem_crypto/soft_secure_element/soft_se.c # or smtc_modem_crypto/lr11xx_crypto_engine/lr11xx_ce.c
+		${CRYPTO_ENGINE}
 		lr1mac/src/smtc_real/src/smtc_real.c
 		lr1mac/src/services/smtc_duty_cycle.c
 		lr1mac/src/lr1mac_core.c
@@ -72,6 +80,11 @@ if(CONFIG_RADIO_LR11XX)
 		smtc_ralf/src/ralf_lr11xx.c
 		smtc_ral/src/ral_lr11xx.c
 	)
+	if (CONFIG_USE_CRYPTO_ENGINE)
+	set(LBM_SOURCE ${LBM_SOURCE}
+		radio_drivers/lr11xx_driver/src/lr11xx_crypto_engine.c
+	)
+	endif()
 else()
 	set(LBM_SOURCE ${LBM_SOURCE}
 		smtc_ral/src/ral_sx126x.c
