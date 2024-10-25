@@ -231,7 +231,7 @@ static void modem_load_appkey_context( void );
 
 void smtc_modem_init( void ( *callback_event )( void ), bool nreset )
 {
-    SMTC_MODEM_HAL_TRACE_INFO( "Modem Initialization\n" );
+    SMTC_MODEM_HAL_TRACE_INFO( "Modem Initialization, lbm version: %d.%d.%d\n", LORA_BASICS_MODEM_FW_VERSION_MAJOR, LORA_BASICS_MODEM_FW_VERSION_MINOR, LORA_BASICS_MODEM_FW_VERSION_PATCH);
 
     // init radio and put it in sleep mode
 	if (nreset) {
@@ -255,6 +255,8 @@ void smtc_modem_init( void ( *callback_event )( void ), bool nreset )
     // If lr11xx crypto engine is used for crypto
 #if defined( USE_LR11XX_CE )
     modem_load_appkey_context( );
+#else
+    SMTC_MODEM_HAL_TRACE_INFO( "cryptographic engine disabled\n" );
 #endif
     // Event EVENT_RESET must be done at the end of init !!
     increment_asynchronous_msgnumber( SMTC_MODEM_EVENT_RESET, 0, 0xFF );
