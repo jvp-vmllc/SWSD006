@@ -2007,6 +2007,27 @@ smtc_modem_return_code_t smtc_modem_debug_connect_with_abp( uint8_t stack_id, ui
                                                             uint8_t nwk_skey[SMTC_MODEM_KEY_LENGTH],
                                                             uint8_t app_skey[SMTC_MODEM_KEY_LENGTH] );
 
+/**
+ * @brief Use to set session keys (application and session), to which will prevent
+ * calling of OTAA join when a power cycle, reset (hardware/software) is performed
+ * 
+ * @note 
+ * 
+ * @param dev_addr The network device address
+ * @param nwk_skey Network Session Key to be configured
+ * @param app_skey Application Session Key to be configured
+ * 
+ * @return Modem return code as defined in @ref smtc_modem_return_code_t
+ * @retval SMTC_MODEM_RC_OK                Command executed without errors
+ * @retval SMTC_MODEM_RC_INVALID           At least \p nwk_skey or \p nwk_sapp_skeykey is NULL
+ * @retval SMTC_MODEM_RC_BUSY              Modem is currently in test mode
+ * @retval SMTC_MODEM_RC_FAIL              Modem is already joined
+ * @retval SMTC_MODEM_RC_INVALID_STACK_ID  Invalid \p stack_id
+ */
+smtc_modem_return_code_t vmllc_reconnect_using_keys(uint32_t dev_addr,
+                                                    uint8_t nwk_skey[SMTC_MODEM_KEY_LENGTH],
+                                                    uint8_t app_skey[SMTC_MODEM_KEY_LENGTH] );
+
 #ifdef __cplusplus
 }
 #endif

@@ -2640,4 +2640,44 @@ static void modem_load_appkey_context( void )
 }
 #endif
 
+/* --- Vision Metering, LLC - custom functions ------------------------------ */
+
+#if defined ( LRWN_NVS )
+//if CONFIG_LRWN_NVS is set to 'y'
+smtc_modem_return_code_t vmllc_reconnect_using_keys(uint32_t dev_addr,
+                                                    uint8_t nwk_skey[SMTC_MODEM_KEY_LENGTH],
+                                                    uint8_t app_skey[SMTC_MODEM_KEY_LENGTH] )
+{
+    RETURN_BUSY_IF_TEST_MODE( );
+    RETURN_INVALID_IF_NULL( nwk_skey );
+    RETURN_INVALID_IF_NULL( app_skey );
+
+    SMTC_MODEM_HAL_TRACE_INFO("%s\n", __func__);
+
+    uint8_t stack_id = 0;
+
+    lorawan_api_set_activation_mode( ACTIVATION_MODE_ABP, stack_id );
+
+    if( lorawan_api_devaddr_set( dev_addr, stack_id ) != OKLORAWAN )
+    {
+        return SMTC_MODEM_RC_FAIL;
+    }
+
+    if( smtc_secure_element_set_key( SMTC_SE_NWK_S_ENC_KEY, nwk_skey, stack_id ) != SMTC_SE_RC_SUCCESS )
+    {
+        return SMTC_MODEM_RC_INVALID;
+    }
+    if( smtc_secure_element_set_key( SMTC_SE_APP_S_KEY, app_skey, stack_id ) != SMTC_SE_RC_SUCCESS )
+    {
+        return SMTC_MODEM_RC_INVALID;
+    }
+
+    if( smtc_modem_join_network( stack_id ) != SMTC_MODEM_RC_OK )
+    {
+        return SMTC_MODEM_RC_FAIL;
+    }
+    return SMTC_MODEM_RC_OK;
+}
+#endif
+
 /* --- EOF ------------------------------------------------------------------ */
