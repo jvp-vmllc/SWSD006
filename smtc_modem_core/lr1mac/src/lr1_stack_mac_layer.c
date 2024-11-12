@@ -50,6 +50,10 @@
 #include "lr1mac_config.h"
 #include "smtc_modem_crypto.h"
 
+#if defined( LRWN_NVS )
+    #include "nvs_lorawan.h"
+#endif
+
 /*
  * -----------------------------------------------------------------------------
  * --- PRIVATE TYPES -----------------------------------------------------------
@@ -1474,6 +1478,12 @@ status_lorawan_t lr1_stack_mac_join_accept( lr1_stack_mac_t* lr1_mac )
     SMTC_MODEM_HAL_TRACE_PRINTF( " MacRx1DataRateOffset= %d\n", lr1_mac->rx1_dr_offset );
     SMTC_MODEM_HAL_TRACE_PRINTF( " MacRx2DataRate= %d\n", lr1_mac->rx2_data_rate );
     SMTC_MODEM_HAL_TRACE_PRINTF( " MacRx1Delay= %d\n", lr1_mac->rx1_delay_s );
+
+#if defined( LRWN_NVS )
+    csm_forward_dev_address(lr1_mac->dev_addr);
+#else
+    SMTC_MODEM_HAL_TRACE_PRINTF(" vm: context saving management is disabled");
+#endif
 
     return OKLORAWAN;
 }

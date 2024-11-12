@@ -48,6 +48,10 @@
 #include "smtc_modem_hal.h"
 #include "smtc_modem_hal_dbg_trace.h"
 
+#if defined( LRWN_NVS )
+    #include "nvs_lorawan.h"
+#endif
+
 #include <string.h>  //for memset, memcpy
 
 /*
@@ -522,6 +526,12 @@ smtc_se_return_code_t smtc_secure_element_derive_and_store_key( uint8_t* input, 
     {
         return rc;
     }
+
+#if defined( LRWN_NVS )
+    csm_forward_session_keys(key, targetkey_id);
+#else
+    SMTC_MODEM_HAL_TRACE_PRINTF(" vm: context saving management is disabled");
+#endif
 
     // Store key
     rc = smtc_secure_element_set_key( targetkey_id, key, stack_id );

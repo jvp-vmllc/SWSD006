@@ -73,6 +73,14 @@ else()
 		target_include_directories(smtc_lbm INTERFACE lr1mac/src/lr1mac_class_c)
 		set(LBM_SOURCE ${LBM_SOURCE} lr1mac/src/lr1mac_class_c/lr1mac_class_c.c)
 	endif()
+
+	# VM Context Saving Management (CSM) service
+	if (CONFIG_LRWN_NVS)
+		target_compile_definitions(smtc_lbm INTERFACE LRWN_NVS)
+		target_include_directories(smtc_lbm INTERFACE
+		../../codebase/samples/lbm_sid_end_device_port/utils/inc
+		)
+	endif()
 endif()
 
 if(CONFIG_RADIO_LR11XX)
