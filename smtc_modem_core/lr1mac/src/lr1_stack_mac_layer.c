@@ -1407,6 +1407,12 @@ status_lorawan_t lr1_stack_mac_join_accept( lr1_stack_mac_t* lr1_mac )
     uint32_t join_nonce_prev;  // JoinNonce only
     uint32_t i;
 
+#if defined ( LRWN_NVS )
+    csm_join_accept_frame_snapshot((uint8_t *)&lr1_mac->rx_down_data.rx_payload,
+                                lr1_mac->rx_down_data.rx_payload_size,
+                                CSM_JA_FRAME_STORE);
+#endif
+
     memcpy( join_nonce, &lr1_mac->rx_down_data.rx_payload[1], 6 );
 
 #if defined( PERF_TEST_ENABLED )
@@ -2522,5 +2528,80 @@ static status_lorawan_t ping_slot_info_ans_parser( lr1_stack_mac_t* lr1_mac )
     lr1_mac->nwk_payload_index += PING_SLOT_INFO_ANS_SIZE;
     return ret;
 }
+
+/* --- Vision Metering, LLC - function definitions ------------------------------ */
+#if defined ( LRWN_NVS )
+//if CONFIG_LRWN_NVS is set to 'y'
+void vmllc_mac_join_reconnect( lr1_stack_mac_t* lr1_mac )
+{
+    SMTC_MODEM_HAL_TRACE_PRINTF( " %s\n", __func__);
+
+    uint8_t  join_nonce[6];    // JoinNonce + NetID
+    uint32_t join_nonce_tmp;   // JoinNonce only
+    uint32_t join_nonce_prev;  // JoinNonce only
+    uint32_t i;
+
+    // snapshot are performed in lr1mac_core_join, and pass as "lr1_stack_mac_t* lr1_mac" in this section
+
+    memcpy( join_nonce, &lr1_mac->rx_down_data.rx_payload[1], 6 );
+
+    join_nonce_prev = lr1_mac->join_nonce[0];
+    join_nonce_prev |= lr1_mac->join_nonce[1] << 8;
+    join_nonce_prev |= lr1_mac->join_nonce[2] << 16;
+
+    join_nonce_tmp = join_nonce[0];
+    join_nonce_tmp |= join_nonce[1] << 8;
+    join_nonce_tmp |= join_nonce[2] << 16;
+
+    memcpy( lr1_mac->join_nonce, join_nonce, 6 );
+
+    // todo: restore frame counter and other LoRaWAN parameters under this section
+    lr1_stack_mac_session_init( lr1_mac );
+    smtc_real_config_session( lr1_mac->real );
+
+    if( lr1_mac->rx_down_data.rx_payload_size > 13 )  // MIC has been removed (17 bytes - 4 bytes MIC)
+    {                                                 // cflist are presents
+        for( i = 0; i < 16; i++ )
+        {
+            lr1_mac->cf_list[i] = lr1_mac->rx_down_data.rx_payload[13 + i];
+        }
+
+        smtc_real_update_cflist( lr1_mac->real, lr1_mac->cf_list );
+    }
+    else
+    {
+        smtc_real_init_after_join_snapshot_channel_mask( lr1_mac->real, lr1_mac->tx_data_rate, lr1_mac->tx_frequency );
+    }
+
+    lr1_mac->dev_addr =
+        ( lr1_mac->rx_down_data.rx_payload[7] + ( lr1_mac->rx_down_data.rx_payload[8] << 8 ) +
+          ( lr1_mac->rx_down_data.rx_payload[9] << 16 ) + ( lr1_mac->rx_down_data.rx_payload[10] << 24 ) );
+    lr1_mac->rx1_dr_offset = ( lr1_mac->rx_down_data.rx_payload[11] & 0x70 ) >> 4;
+    lr1_mac->rx2_data_rate = ( lr1_mac->rx_down_data.rx_payload[11] & 0x0F );
+    lr1_mac->rx1_delay_s   = ( lr1_mac->rx_down_data.rx_payload[12] & 0x0F );
+    if( lr1_mac->rx1_delay_s == 0 )
+    {
+        lr1_mac->rx1_delay_s = 1;  // Lorawan standart define 0 such as a delay of 1
+    }
+
+    if( smtc_real_is_rx1_dr_offset_valid( lr1_mac->real, lr1_mac->rx1_dr_offset ) != OKLORAWAN )
+    {
+        SMTC_MODEM_HAL_TRACE_WARNING( "JoinAccept invalid Rx1DrOffset %d\n", lr1_mac->rx1_dr_offset );
+    }
+
+    if( smtc_real_is_rx_dr_valid( lr1_mac->real, lr1_mac->rx2_data_rate ) != OKLORAWAN )
+    {
+        SMTC_MODEM_HAL_TRACE_WARNING( "JoinAccept invalid Rx2Datarate %d\n", lr1_mac->rx2_data_rate );
+    }
+
+    lr1_mac->join_status = JOINED;
+
+    SMTC_MODEM_HAL_TRACE_PRINTF( " Recall DLSettings info.:\n");
+    SMTC_MODEM_HAL_TRACE_PRINTF( " DevAddr= %x\n", lr1_mac->dev_addr );
+    SMTC_MODEM_HAL_TRACE_PRINTF( " MacRx1DataRateOffset= %d\n", lr1_mac->rx1_dr_offset );
+    SMTC_MODEM_HAL_TRACE_PRINTF( " MacRx2DataRate= %d\n", lr1_mac->rx2_data_rate );
+    SMTC_MODEM_HAL_TRACE_PRINTF( " MacRx1Delay= %d\n", lr1_mac->rx1_delay_s );
+}
+#endif
 
 /* --- EOF ------------------------------------------------------------------ */

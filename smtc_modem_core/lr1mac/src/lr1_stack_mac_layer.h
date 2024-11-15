@@ -470,6 +470,16 @@ void lr1_stack_mac_rx_gfsk_launch_callback_for_rp( void* rp_void );
 void lr1_stack_mac_tx_ack_bit_set( lr1_stack_mac_t* lr1_mac, bool enable );
 bool lr1_stack_mac_tx_ack_bit_get( lr1_stack_mac_t* lr1_mac );
 
+/* --- Vision Metering, LLC - function declarations ------------------------------ */
+/**
+ * @brief Called when the device performs power cycle or reset (hardware/software), and if the
+ * device is previously connected - then reconnect and do not perform OTAA.
+ * 
+ * @param lr1_mac Pointer to the loaded snapshot rx payload of the Join Accept frame 
+ * when OTAA is performed
+ */
+void vmllc_mac_join_reconnect( lr1_stack_mac_t* lr1_mac );
+
 #ifdef __cplusplus
 }
 #endif

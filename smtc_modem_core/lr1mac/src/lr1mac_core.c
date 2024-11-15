@@ -49,6 +49,10 @@
 #include "smtc_lora_cad_bt.h"
 #include "lr1mac_config.h"
 
+#if defined( LRWN_NVS )
+    #include "nvs_lorawan.h"
+#endif
+
 /*
  * -----------------------------------------------------------------------------
  * --- PRIVATE MACROS-----------------------------------------------------------
@@ -418,6 +422,18 @@ status_lorawan_t lr1mac_core_join( lr1_stack_mac_t* lr1_mac_obj, uint32_t target
     }
     if( lr1_mac_obj->activation_mode == ACTIVATION_MODE_ABP )
     {
+
+#if defined( LRWN_NVS )
+    // this will only run after a successful OTAA join accept-request
+    const uint8_t frame_payload_size = 29;  // set to 29, the bytes of join accept frame payload
+    SMTC_MODEM_HAL_TRACE_PRINTF("Attempting to reconnect...\n");
+    lr1_mac_obj->rx_down_data.rx_payload_size = frame_payload_size; 
+    csm_join_accept_frame_snapshot((uint8_t *)&lr1_mac_obj->rx_down_data.rx_payload,
+                                    lr1_mac_obj->rx_down_data.rx_payload_size,
+                                    CSM_JA_FRAME_LOAD);
+    vmllc_mac_join_reconnect(lr1_mac_obj);
+    return OKLORAWAN; // early return here, join_status is set under @ref csm_join_accept_frame_snapshot() function
+#endif
         lr1_mac_obj->join_status = JOINED;
         return OKLORAWAN;
     }

@@ -2007,6 +2007,8 @@ smtc_modem_return_code_t smtc_modem_debug_connect_with_abp( uint8_t stack_id, ui
                                                             uint8_t nwk_skey[SMTC_MODEM_KEY_LENGTH],
                                                             uint8_t app_skey[SMTC_MODEM_KEY_LENGTH] );
 
+/* --- Vision Metering, LLC - function declarations ------------------------------ */
+
 /**
  * @brief Use to set session keys (application and session), to which will prevent
  * calling of OTAA join when a power cycle, reset (hardware/software) is performed
