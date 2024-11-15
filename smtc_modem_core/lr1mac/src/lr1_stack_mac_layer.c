@@ -1174,6 +1174,10 @@ void lr1_stack_mac_update( lr1_stack_mac_t* lr1_mac )
         // could also be set to 1 if receive valid ans
         lr1_mac->nb_trans_cpt = 1;  // error case shouldn't exist
         lr1_mac->fcnt_up++;
+#if defined( LRWN_NVS )
+    SMTC_MODEM_HAL_TRACE_PRINTF("increment-store frame counter\n");
+    csm_frame_counter_store_set(&lr1_mac->fcnt_up);
+#endif
         lr1_mac->adr_ack_cnt++;  // increment adr counter each new uplink frame
     }
     else
@@ -2555,8 +2559,14 @@ void vmllc_mac_join_reconnect( lr1_stack_mac_t* lr1_mac )
 
     memcpy( lr1_mac->join_nonce, join_nonce, 6 );
 
-    // todo: restore frame counter and other LoRaWAN parameters under this section
     lr1_stack_mac_session_init( lr1_mac );
+
+    //-------------------------- START RESTORE PARAM --------------------------//
+    // restore necessary parameters (e.g. frame counter value) after the function @ref lr1_stack_mac_session_init()
+    SMTC_MODEM_HAL_TRACE_PRINTF("load-set frame counter\n");
+    csm_frame_counter_load_get(&lr1_mac->fcnt_up);
+    //-------------------------- END RESTORE PARAM ----------------------------//
+
     smtc_real_config_session( lr1_mac->real );
 
     if( lr1_mac->rx_down_data.rx_payload_size > 13 )  // MIC has been removed (17 bytes - 4 bytes MIC)
