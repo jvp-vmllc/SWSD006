@@ -105,3 +105,9 @@ The following table summarizes the compatibility of the reference design firmwar
 [^1]: XTAL: Specify ``CONFIG_RADIO_TCXO=n`` in the build configuration. The LR1121 and SX126x transceivers do not include GNSS.
 [^2]: SX126x: Specify ``-DCONFIG_RADIO_LR11XX=n``or  ``-DCONFIG_RADIO_SX126X=y`` in the build configuration.
 [^3]: LDO: Specify ``LR11XX_SYSTEM_REG_MODE_LDO`` as the radio regulator mode.
+
+## Disclaimer
+EXAMPLE ONLY - This code is being released by Semtech as a demonstrative preview including experimental features.
+This code has not been subjected to the same validation procedure applied to Semtech’s production releases.
+This code is released under the Clear BSD license - see LICENSES.txt.
+Consistent with the terms of the Clear BSD license, it is not warrantied in any way.
